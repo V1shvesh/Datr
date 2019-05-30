@@ -4,7 +4,6 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import * as firebase from 'firebase';
 
 import Button from '../components/Button';
 
@@ -42,15 +41,6 @@ export default class extends Component {
           <Button
             title="Settings"
             onPress={() => navigation.navigate('Settings')}
-          />
-          <Button
-            title="Log Out"
-            onPress={() => {
-              firebase
-                .auth()
-                .signOut()
-                .then(() => navigation.navigate('AuthLoading'));
-            }}
           />
         </View>
       </View>
