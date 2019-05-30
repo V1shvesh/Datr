@@ -4,25 +4,34 @@ import {
 	Text,
 	View,
 	TextInput,
-	Button, 
 } from 'react-native';
 import * as firebase from "firebase";
 
-const logInStyles = StyleSheet.create({
-	logInView: {
+import Button from "../components/Button";
+
+const authStyles = StyleSheet.create({
+	authView: {
 		flex: 1,
 		backgroundColor: '#eeeeee',
 		alignItems: 'flex-start',
 		paddingTop: 100,
 		paddingHorizontal: 40,
 	},
-	logInInput: {
-		backgroundColor: '#ccc9',
-		borderRadius: 2,
+	authInput: {
 		width: 300,
 		height: 40,
 		marginBottom: 40,
+		paddingLeft: 10,
+		fontSize: 18,
+		backgroundColor: '#ccc9',
+		borderRadius: 5,
 	},
+	authBtn: {
+		alignSelf: 'center',
+		width: 150,
+		marginVertical: 15,
+		borderRadius: 5,
+	}
 });
 
 export default class extends Component {
@@ -41,6 +50,7 @@ export default class extends Component {
 		
 		if(email === '' || password === '') {
 			// TODO: Handle this case
+			console.warn("Empty");
 			return;
 		}
 
@@ -54,6 +64,7 @@ export default class extends Component {
 		const { email, password } = this.state;
 		if(email === '' || password === '') {
 			// TODO: Handle this case
+			console.warn("Empty");
 			return;
 		}
 		firebase
@@ -68,16 +79,16 @@ export default class extends Component {
 	render() {
 		return (
 		<View
-			style={logInStyles.logInView}
+			style={authStyles.authView}
 		>
 			<Text>Email</Text>
 			<TextInput
-				style={logInStyles.logInInput}
+				style={authStyles.authInput}
 				onChangeText={(email)=>this.setState({email})}
 			/>
 			<Text>Password</Text>
 			<TextInput
-				style={logInStyles.logInInput}
+				style={authStyles.authInput}
 				secureTextEntry
 				autoCorrect={false}
 				autoCapitalize="none"
@@ -85,10 +96,12 @@ export default class extends Component {
 			/>
 			<Button
 				title="Log In"
+				style={authStyles.authBtn}
 				onPress={this.logInAction}
 			/>
 			<Button
 				title="Sign In"
+				style={authStyles.authBtn}
 				onPress={this.signInAction}
 			/>
 		</View>
