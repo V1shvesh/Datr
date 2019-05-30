@@ -1,9 +1,9 @@
-import { createStackNavigator } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation';
 
 import Settings from '../containers/Settings';
 import Home from '../containers/Home';
 
-export default createStackNavigator({
+export default createDrawerNavigator({
   Home,
   Settings,
 });

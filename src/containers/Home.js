@@ -5,8 +5,6 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import Button from '../components/Button';
-
 const homeStyles = StyleSheet.create({
   container: {
     flex: 1,
@@ -28,8 +26,6 @@ export default class extends Component {
   }
 
   render() {
-    const { navigation } = this.props;
-
     return (
       <View style={homeStyles.container}>
         <Text
@@ -37,12 +33,6 @@ export default class extends Component {
         >
           Datr
         </Text>
-        <View style={{ justifyContent: 'space-evenly', height: 150 }}>
-          <Button
-            title="Settings"
-            onPress={() => navigation.navigate('Settings')}
-          />
-        </View>
       </View>
     );
   }
