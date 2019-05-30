@@ -1,9 +1,9 @@
 import { createStackNavigator } from 'react-navigation';
 
-import Details from '../containers/Details';
+import Settings from '../containers/Settings';
 import Home from '../containers/Home';
 
 export default createStackNavigator({
 	Home,
-	Details,
+	Settings,
 });

@@ -1,7 +1,7 @@
 import { createStackNavigator } from "react-navigation";
 
-import LogIn from '../containers/LogIn';
+import Auth from '../containers/Auth';
 
 export default createStackNavigator({
-	LogIn,
+	Auth,
 });
