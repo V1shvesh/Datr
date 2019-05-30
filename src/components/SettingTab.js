@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const settingTabstyles = StyleSheet.create({
   settingTabView: {
@@ -8,13 +8,21 @@ const settingTabstyles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingLeft: 10,
-    marginVertical: 1,
+    marginBottom: 1,
     backgroundColor: '#ffffff',
   },
 });
 
-export default () => (
-  <View style={settingTabstyles.settingTabView}>
-    <Text> Settings </Text>
-  </View>
-);
+export default (props) => {
+  const { title, onPress } = props;
+  return (
+    <TouchableOpacity
+      style={settingTabstyles.settingTabView}
+      onPress={onPress}
+    >
+      <Text>
+        {title}
+      </Text>
+    </TouchableOpacity>
+  );
+};
