@@ -98,6 +98,7 @@ export default class extends Component {
         <TextInput
           style={authStyles.authInput}
           onChangeText={email => this.setState({ email })}
+          autoCapitalize="none"
         />
         <Text>Password</Text>
         <TextInput
