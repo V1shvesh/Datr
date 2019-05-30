@@ -1,43 +1,18 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import * as firebase from "firebase";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-	},
-	box1: {
-		flex: 1,
-		backgroundColor: 'red',
-	},
-	box2: {
-		flex: 2,
-		backgroundColor: 'blue',
-	},
-	box3: {
-		flex: 3,
-		backgroundColor: 'green',
-	},
-});
+import AppNavigator from './src/navigators/AppNavigator';
+import firebaseConfig from './firebaseConfig';
 
- export default class FlexDimensionsBasics extends Component {
+const AppContainer = createAppContainer(AppNavigator);
+
+
+export default class App extends Component {
   render() {
+    firebase.initializeApp(firebaseConfig);
     return (
-      // Try removing the `flex: 1` on the parent View.
-      // The parent will not have dimensions, so the children can't expand.
-      // What if you add `height: 300` instead of `flex: 1`?
-      <View style={styles.container}>
-        <View style={styles.box1} />
-        <View style={{flex: 2, backgroundColor: 'skyblue'}} />
-        <View style={{flex: 3, backgroundColor: 'steelblue'}} />
-      </View>
+      <AppContainer/>
     );
   }
 }
