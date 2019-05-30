@@ -18,7 +18,7 @@ const authStyles = StyleSheet.create({
 		paddingHorizontal: 40,
 	},
 	authInput: {
-		width: 300,
+		width: 320,
 		height: 40,
 		marginBottom: 40,
 		paddingLeft: 10,
@@ -30,7 +30,6 @@ const authStyles = StyleSheet.create({
 		alignSelf: 'center',
 		width: 150,
 		marginVertical: 15,
-		borderRadius: 5,
 	}
 });
 
@@ -40,9 +39,17 @@ export default class extends Component {
 		this.state = {
 			email:'',
 			password:'',
+			logInLoading: false,
+			signInLoading: false,
 		};
 		this.logInAction = this.logInAction.bind(this);
 		this.signInAction = this.signInAction.bind(this);
+	}
+
+	static navigationOptions() {
+		return {
+			title: 'LogIn | SignUp',
+		};
 	}
 
 	logInAction() {
@@ -54,10 +61,12 @@ export default class extends Component {
 			return;
 		}
 
-		firebase
+		this.setState({logInLoading: true}, () => {
+			firebase
 			.auth()
 			.signInWithEmailAndPassword(email, password)
 			.catch(error => console.warn(error));
+		});
 	}
 
 	signInAction() {
@@ -77,6 +86,10 @@ export default class extends Component {
 	}
 
 	render() {
+		const {
+			loginLoading,
+			signInLoading,
+		} = this.state;
 		return (
 		<View
 			style={authStyles.authView}
@@ -96,11 +109,13 @@ export default class extends Component {
 			/>
 			<Button
 				title="Log In"
+				loading={loginLoading}
 				style={authStyles.authBtn}
 				onPress={this.logInAction}
 			/>
 			<Button
 				title="Sign In"
+				loading={signInLoading}
 				style={authStyles.authBtn}
 				onPress={this.signInAction}
 			/>

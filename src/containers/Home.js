@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import {
 	Text,
 	View,
-	Button,
 	StyleSheet,
 } from 'react-native';
 import * as firebase from "firebase";
+
+import Button from "../components/Button";
 
 const homeStyles = StyleSheet.create({
   container: {
@@ -21,16 +22,23 @@ const homeStyles = StyleSheet.create({
 });
 
 export default class extends Component {
+
+	static navigationOptions() {
+		return {
+			title: 'Home',
+		};
+	}
+
 	render() {
     return (
 			<View style={homeStyles.container}>
 				<Text
 					style={homeStyles.title}
-				> MyApp </Text>
-				<View style={{justifyContent: "space-around", height: 200}}>
+				> Datr </Text>
+				<View style={{justifyContent: "space-evenly", height: 150}}>
 					<Button
-						title="Details"
-						onPress={()=>this.props.navigation.navigate('Details')}
+						title="Settings"
+						onPress={()=>this.props.navigation.navigate('Settings')}
 					/>
 					<Button
 						title="Log Out"

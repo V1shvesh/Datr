@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {
-  TouchableOpacity,
   StyleSheet,
+  TouchableOpacity,
+  ActivityIndicator,
   Text,
 } from 'react-native'
 
@@ -25,6 +26,7 @@ export default class Button extends Component {
       style,
       textStyle,
       onPress,
+      loading,
     } = this.props;
 
     return (
@@ -32,7 +34,11 @@ export default class Button extends Component {
         style={StyleSheet.flatten([btnStyle.btn, style])}
         onPress={onPress}
       >
-        <Text style={btnStyle.text}>{title}</Text>
+        {
+          loading
+            ? <ActivityIndicator size="small" color="#6cd4ff" />
+            : <Text style={btnStyle.text}>{title}</Text>
+        }
       </TouchableOpacity>
     );
   }
