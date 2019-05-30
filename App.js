@@ -10,7 +10,9 @@ const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends Component {
   render() {
-    firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
     return (
       <AppContainer/>
     );
