@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {
-	Text,
+	ActivityIndicator,
 	View,
 } from 'react-native';
 import * as firebase from "firebase";
@@ -16,7 +16,7 @@ export default class AuthLoading extends Component {
   render() {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Loading...</Text>
+        <ActivityIndicator size="small" color="#256eff" />
       </View>
     );
   }
