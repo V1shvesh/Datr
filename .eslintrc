@@ -4,6 +4,10 @@
   "rules": {
     "react/prop-types": 0,
     "react/jsx-filename-extension": 0,
-    "no-console": 0
+    "no-console": 0,
+    "no-unused-vars": "warn"
+  },
+  "env": {
+    "jest": true
   }
 }
